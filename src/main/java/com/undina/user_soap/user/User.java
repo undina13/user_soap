@@ -4,6 +4,7 @@ import lombok.*;
 import org.hibernate.annotations.BatchSize;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -28,5 +29,5 @@ public class User {
         joinColumns = @JoinColumn(name = "user_login"),
         inverseJoinColumns = @JoinColumn(name = "roles_id"))
 @ToString.Exclude
-    private Set<Role> roles;
+    private List<Role> roles;
 }

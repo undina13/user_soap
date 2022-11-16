@@ -33,7 +33,7 @@ public class UserService {
     }
 
     public JWTToken signup(LoginRequest loginRequest) {
-        Set<Role>roles = roleRepository.getAllByIdIn(loginRequest.getRoles());
+        List<Role>roles = roleRepository.getAllByIdIn(loginRequest.getRoles());
         User user = new User(loginRequest.getLogin(), loginRequest.getPassword(), loginRequest.getName(), roles);
 
         User registratedUser = userRepository.save(user);

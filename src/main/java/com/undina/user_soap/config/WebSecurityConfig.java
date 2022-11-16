@@ -23,10 +23,10 @@ public class WebSecurityConfig {
 
     private final JWTFilter jwtFilter;
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+//    @Bean
+//    public PasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
 
     @Bean
     public SecurityFilterChain filterChain(
@@ -37,7 +37,7 @@ public class WebSecurityConfig {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/api-docs/**", "/swagger-ui/**").permitAll()
+                .antMatchers("/service/users**", "/swagger-ui/**").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/healthchecks/app").permitAll()
                 .antMatchers(HttpMethod.POST, "/users/signup", "/users/login").permitAll()

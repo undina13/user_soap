@@ -8,6 +8,7 @@ import lombok.ToString;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 import java.util.Set;
 
 @Setter
@@ -24,6 +25,6 @@ public class LoginRequestUpdate {
     private String password;
 
     private String name;
-    private Set<Integer> roles;
+    private List<Integer> roles;
 
 }
