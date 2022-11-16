@@ -99,15 +99,7 @@
         </xs:complexType>
     </xs:element>
 
-    <!--    Редактировать существующего пользователя в БД.-->
-<!--    <xs:element name="updateUserDetailsRequest">-->
-<!--        <xs:complexType>-->
-<!--            <xs:sequence>-->
-<!--                <xs:element name="userDetails" type="tns:userDetails"/>-->
-<!--                <xs:element name="rolesIds" type="xs:int" nillable="true" minOccurs="0" maxOccurs="unbounded"/>-->
-<!--            </xs:sequence>-->
-<!--        </xs:complexType>-->
-<!--    </xs:element>-->
+
     <xs:element name="updateUserDetailsRequest">
         <xs:complexType>
             <xs:sequence>
