@@ -124,15 +124,16 @@ public class UsersEndpoint {
     public UpdateUserDetailsResponse updateUser(@RequestPayload UpdateUserDetailsRequest request) {
         LoginRequestUpdate loginRequestUpdate = new LoginRequestUpdate();
         ServiceStatus serviceStatus = new ServiceStatus();
-        UserDetails userAllDetails = request.getUserDetails();
-        List<String> stringListException = verifyForm(userAllDetails);
+        UserDetails userDetails = new UserDetails();
+        userDetails.setLogin(request.getLogin());
+        userDetails.setName(request.getName());
+        userDetails.setPassword(request.getPassword());
+        List<String> stringListException = verifyForm(userDetails);
         if (stringListException.isEmpty()) {
-            loginRequestUpdate.setLogin(userAllDetails.getLogin());
-            loginRequestUpdate.setName(userAllDetails.getName());
-            loginRequestUpdate.setPassword(userAllDetails.getPassword());
-            List<Integer> rolesIds = userAllDetails.roles.stream()
-                    .map(roleDetails -> roleDetails.id)
-                    .collect(Collectors.toList());
+            loginRequestUpdate.setLogin(request.getLogin());
+            loginRequestUpdate.setName(request.getName());
+            loginRequestUpdate.setPassword(request.getPassword());
+            List<Integer> rolesIds = request.getRolesIds();
             loginRequestUpdate.setRoles(rolesIds);
             userService.update(loginRequestUpdate);
             serviceStatus.setStatus("SUCCESS");
